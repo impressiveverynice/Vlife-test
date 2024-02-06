@@ -15,5 +15,5 @@ public class OrderDetail {
     @Column(name = "merchant_id")
     private Long merchantId;
     @Column(name = "order_value")
-    private String orderValue;
+    private Double orderValue;
 }
