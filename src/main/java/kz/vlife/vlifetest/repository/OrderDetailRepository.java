@@ -9,5 +9,5 @@ import java.util.Optional;
 @Repository
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
 
-    List<OrderDetail> findAllByMerchantId(Long merchantId);
+    List<OrderDetail> findAllByMerchantName(String name);
 }

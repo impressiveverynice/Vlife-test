@@ -8,12 +8,11 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table
+@Table (name = "order_details")
 public class OrderDetail {
     @Id
     private Long id;
-    @Column(name = "merchant_id")
-    private Long merchantId;
-    @Column(name = "order_value")
+
+    private String merchantName;
     private Double orderValue;
 }
