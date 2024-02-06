@@ -5,6 +5,6 @@ import kz.vlife.vlifetest.entity.OrderDetail;
 import java.util.List;
 
 public interface MerchantPersonalAccountService {
-
-    void getAverageCheque (Long merchantId, List<OrderDetail> orderDetailList);
+    double calculateAverageChequeForGivenMerchantId(Long merchantId);
+    List<OrderDetail> collectOrderDetailListForGivenMerchantId (Long merchantId);
 }
