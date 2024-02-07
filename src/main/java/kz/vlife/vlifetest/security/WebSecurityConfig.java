@@ -18,6 +18,7 @@ public class WebSecurityConfig {
     public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((authorize) -> {
@@ -25,11 +26,14 @@ public class WebSecurityConfig {
         }).httpBasic(Customizer.withDefaults());
         return http.build();
     }
+
     @Bean
     public UserDetailsService userDetailsService() {
 
-        UserDetails admin = User.builder().username("admin").password(passwordEncoder().encode("admin")).roles("ADMIN")
+        UserDetails admin = User.builder().username("vlife_merchant").password(passwordEncoder().encode("123")).roles("MERCHANT")
                 .build();
-        return new InMemoryUserDetailsManager(admin);
+        UserDetails test = User.builder().username("userWithNoOrders").password(passwordEncoder().encode("123")).roles("TEST")
+                .build();
+        return new InMemoryUserDetailsManager(admin, test);
     }
 }

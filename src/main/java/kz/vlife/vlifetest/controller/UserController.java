@@ -9,6 +9,6 @@ public class UserController {
 
     @GetMapping("/user")
     public String getUser(Authentication authentication) {
-        return "Hello Spring Security"+authentication.getName();
+        return "Hello, " + authentication.getName();
     }
 }

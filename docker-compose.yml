@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql
+    environment:
+      PGUSER: postgres
+      POSTGRES_DB: vlifedb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "books_db" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    volumes:
+      - ./src/main/resources/db/changelog/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  spring-app:
+    build: .
+    container_name: vlife-app
+    depends_on:
+      postgresql:
+          condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql/vlifedb?currentSchema=vlifeschema&prepareThreshold=0
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

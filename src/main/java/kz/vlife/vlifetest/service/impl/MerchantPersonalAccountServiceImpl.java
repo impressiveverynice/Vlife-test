@@ -1,7 +1,8 @@
-package kz.vlife.vlifetest.service;
+package kz.vlife.vlifetest.service.impl;
 
 import kz.vlife.vlifetest.entity.OrderDetail;
 import kz.vlife.vlifetest.repository.OrderDetailRepository;
+import kz.vlife.vlifetest.service.MerchantPersonalAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

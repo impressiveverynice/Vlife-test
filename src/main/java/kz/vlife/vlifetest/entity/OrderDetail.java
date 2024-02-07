@@ -1,18 +1,26 @@
 package kz.vlife.vlifetest.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
 @Entity
-@Table (name = "order_details")
+@Table(name = "order_details")
 public class OrderDetail {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @JsonIgnore
     private String merchantName;
     private Double orderValue;
+
+    public OrderDetail() {
+
+    }
+
+    public OrderDetail(String merchantName, double orderValue) {
+        this.merchantName = merchantName;
+        this.orderValue = orderValue;
+    }
 }
