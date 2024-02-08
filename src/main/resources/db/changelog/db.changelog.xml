@@ -22,7 +22,7 @@
         <sql>
             INSERT INTO order_details (merchant_name, order_value) VALUES ('merchant1', 10.5);
             INSERT INTO order_details (merchant_name, order_value) VALUES ('merchant2', 20.0);
-            INSERT INTO order_details (merchant_name, order_value) VALUES ('vlife_merchant', 15.75);
+            INSERT INTO order_details (merchant_name, order_value) VALUES ('vlife_merchant', 100.0);
             INSERT INTO order_details (merchant_name, order_value) VALUES ('vlife_merchant', 10.5);
             INSERT INTO order_details (merchant_name, order_value) VALUES ('merchant2', 20.0);
         </sql>
