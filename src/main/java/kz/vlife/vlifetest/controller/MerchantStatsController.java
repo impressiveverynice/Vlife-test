@@ -19,8 +19,9 @@ public class MerchantStatsController {
     private final MerchantPersonalAccountService merchantPersonalAccountService;
 
     @GetMapping("/average-cheque")
-    public Double getAverageCheque(Principal principal) {
-        return merchantPersonalAccountService.calculateAverageChequeForMerchant(principal.getName());
+    public String getAverageCheque(Principal principal) {
+        return String.format("Average cheque for %s = %s", principal.getName(), merchantPersonalAccountService.calculateAverageChequeForMerchant(principal.getName()));
+
     }
 
     @GetMapping("/orders")
